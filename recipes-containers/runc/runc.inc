@@ -61,11 +61,13 @@ do_compile() {
 	# can find the needed headers files and libraries
 	export CGO_ENABLED="1"
 	export CGO_CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_TARGET}"
-	export CGO_LDFLAGS="${LDFLAGS} --sysroot=${STAGING_DIR_TARGET}"
+	export CGO_LDFLAGS="${LDFLAGS} -Wl,--build-id=none --sysroot=${STAGING_DIR_TARGET}"
 	export GO=${GO}
 
 	export CFLAGS=""
 	export LDFLAGS=""
+
+	export EXTRA_LDFLAGS='-buildid= -s -w -linkmode external -extldflags "-Wl,--build-id=none"'
 
 	if ${@bb.utils.contains('PACKAGECONFIG', 'static', 'true', 'false', d)}; then
 		oe_runmake static
@@ -81,3 +83,4 @@ do_install() {
 	ln -sf runc ${D}/${bindir}/docker-runc
 }
 
+INSANE_SKIP:${PN} += "ldflags already-stripped"

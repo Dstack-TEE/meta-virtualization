@@ -50,15 +50,14 @@ do_compile() {
 	export GOARCH=${TARGET_GOARCH}
 	export CGO_ENABLED="1"
 	export CGO_CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_TARGET}"
-	export CGO_LDFLAGS="${LDFLAGS} --sysroot=${STAGING_DIR_TARGET}"
+	export CGO_LDFLAGS="${LDFLAGS} -Wl,--build-id=none --sysroot=${STAGING_DIR_TARGET}"
 
 	# our copied .go files are to be used for the build
 	ln -sf vendor.copy vendor
 	# inform go that we know what we are doing
 	cp ${WORKDIR}/modules.txt vendor/
 
-	GO_LDFLAGS="-s -w -X internal.Version=${PV} -X ${COMPOSE_PKG}/internal.Version=${PV}"
-	GO_BUILDTAGS=""
+	GO_LDFLAGS="-buildid= -s -w -X internal.Version=${PV} -X ${COMPOSE_PKG}/internal.Version=${PV}"
 	mkdir -p ./bin
 	${GO} build ${GOBUILDFLAGS} -tags "$GO_BUILDTAGS" -ldflags "$GO_LDFLAGS" -o ./bin/docker-compose ./cmd
 }

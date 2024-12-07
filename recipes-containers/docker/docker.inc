@@ -71,11 +71,18 @@ do_compile() {
 	export GOARCH=${TARGET_GOARCH}
 	export CGO_ENABLED="1"
 	export CGO_CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_TARGET}"
-	export CGO_LDFLAGS="${LDFLAGS} --sysroot=${STAGING_DIR_TARGET}"
+	export CGO_LDFLAGS="${LDFLAGS} -Wl,--build-id=none --sysroot=${STAGING_DIR_TARGET}"
 	export DOCKER_BUILDTAGS='${BUILD_TAGS} ${PACKAGECONFIG_CONFARGS}'
 	export GO111MODULE=off
 
 	export DISABLE_WARN_OUTSIDE_CONTAINER=1
+
+	# Set reproducible build environment
+	export SOURCE_DATE_EPOCH=0
+	export TZ=UTC
+	export BUILDTIME="1970-01-01T00:00:00Z"
+	export DOCKER_LDFLAGS=" -buildid= -s -w"
+	export GO_LDFLAGS="-buildid= -s -w"
 
 	cd ${S}/src/import/
 
@@ -87,11 +94,12 @@ do_compile() {
         # build the cli
 	cd ${S}/src/import/.gopath/src/github.com/docker/cli
 	export CFLAGS=""
-	export LDFLAGS=""
+	export LDFLAGS="-Wl,--build-id=none"
 	export DOCKER_VERSION=${DOCKER_VERSION}
 	VERSION="${DOCKER_VERSION}" DOCKER_GITCOMMIT="${DOCKER_COMMIT}" make dynbinary
 
 	# build the proxy
+	export GOBUILDFLAGS="-ldflags='-buildid= -s -w'"
 	cd ${S}/src/import/.gopath/src/github.com/docker/libnetwork
 	oe_runmake cross-local
 }
@@ -124,6 +132,8 @@ do_install() {
 	install -m 0755 ${S}/src/import/contrib/check-config.sh ${D}${datadir}/docker/
 }
 
+# Prevent Yocto from stripping and let us handle debug info
+INSANE_SKIP:${PN} += "already-stripped"
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES','systemd','${PN}','',d)}"
 SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','docker.socket','',d)}"

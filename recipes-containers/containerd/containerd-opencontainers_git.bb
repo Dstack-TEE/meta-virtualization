@@ -47,7 +47,7 @@ do_compile() {
     # can find the needed headers files and libraries
     export CGO_ENABLED="1"
     export CGO_CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_TARGET}"
-    export CGO_LDFLAGS="${LDFLAGS} --sysroot=${STAGING_DIR_TARGET}"
+    export CGO_LDFLAGS="${LDFLAGS} -Wl,--build-id=none --sysroot=${STAGING_DIR_TARGET}"
     export BUILDTAGS="no_btrfs static_build netgo"
     export CFLAGS="${CFLAGS}"
     export LDFLAGS="${LDFLAGS}"
@@ -56,11 +56,10 @@ do_compile() {
     # cannot find package runtime/cgo (using -importcfg)
     #        ... recipe-sysroot-native/usr/lib/aarch64-poky-linux/go/pkg/tool/linux_amd64/link:
     #        cannot open file : open : no such file or directory
-    export GO_BUILD_FLAGS="-trimpath -a -pkgdir dontusecurrentpkgs"
-    export GO111MODULE=off
-
     cd ${S}
 
+    export EXTRA_LDFLAGS="-buildid= -s -w"
+    export GO111MODULE=off
     oe_runmake binaries
 }
 
