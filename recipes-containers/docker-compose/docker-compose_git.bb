@@ -59,10 +59,9 @@ do_compile() {
 	# can find the needed headers files and libraries
 	export GOARCH=${TARGET_GOARCH}
 	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS} -Wl,--build-id=none"
 
-	GO_LDFLAGS="-s -w -X internal.Version=${PV} -X ${COMPOSE_PKG}/internal.Version=${PV}"
-	GO_BUILDTAGS=""
+	GO_LDFLAGS="-buildid= -s -w -X internal.Version=${PV} -X ${COMPOSE_PKG}/internal.Version=${PV}"
 	mkdir -p ./bin
 	${GO} build ${GOBUILDFLAGS} -tags "$GO_BUILDTAGS" -ldflags "$GO_LDFLAGS" -o ./bin/docker-compose ./cmd
 }

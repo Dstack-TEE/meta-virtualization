@@ -49,7 +49,7 @@ do_compile() {
     # can find the needed headers files and libraries
     export CGO_ENABLED="1"
     export CGO_CFLAGS="${CFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS} -Wl,--build-id=none"
     export BUILDTAGS="no_btrfs static_build netgo"
     export CFLAGS="${CFLAGS}"
     export LDFLAGS="${LDFLAGS}"
@@ -58,14 +58,9 @@ do_compile() {
     # cannot find package runtime/cgo (using -importcfg)
     #        ... recipe-sysroot-native/usr/lib/aarch64-poky-linux/go/pkg/tool/linux_amd64/link:
     #        cannot open file : open : no such file or directory
-    export GO_BUILD_FLAGS="-trimpath -a -pkgdir dontusecurrentpkgs"
-    # As of v2.2.0+ the GO11MODULE setting breaks the build (linking errors). It doesn't
-    # seem necessary anymore. Leaving it here for now as a breakcrumb if other errors pop
-    # up
-    # export GO111MODULE=off
-
     cd ${S}
 
+    export EXTRA_LDFLAGS="-buildid= -s -w"
     oe_runmake binaries
 }
 
