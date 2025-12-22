@@ -90,7 +90,7 @@ do_install() {
 
 FILES:${PN} += "${systemd_system_unitdir}/*"
 
-INSANE_SKIP:${PN} += "ldflags already-stripped"
+INSANE_SKIP:${PN} += "ldflags already-stripped buildpaths"
 
 COMPATIBLE_HOST = "^(?!(qemu)?mips).*"
 
