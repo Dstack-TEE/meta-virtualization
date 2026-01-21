@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reproducible Build <build@dstack.org>
+Date: Tue, 10 Dec 2024 12:00:00 +0000
+Subject: [PATCH] Makefile: use --abbrev=8 for reproducibility
+
+Force git describe to use 8-character abbreviation for commit hash
+to ensure reproducible builds regardless of repository size.
+
+Upstream-Status: Inappropriate [reproducibility specific]
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: git/src/import/Makefile
+===================================================================
+--- git.orig/src/import/Makefile
++++ git/src/import/Makefile
+@@ -14,7 +14,7 @@ EXTRA_BUILDTAGS :=
+ BUILDTAGS := seccomp urfave_cli_no_docs
+ BUILDTAGS += $(EXTRA_BUILDTAGS)
+
+-COMMIT := $(shell git describe --dirty --long --always)
++COMMIT := $(shell git describe --dirty --long --always --abbrev=8)
+ EXTRA_VERSION :=
+ LDFLAGS_COMMON := -X main.gitCommit=$(COMMIT) \
+ 		  $(if $(strip $(EXTRA_VERSION)),-X main.extraVersion=$(EXTRA_VERSION),)
