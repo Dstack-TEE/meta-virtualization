@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Reproducible Build <build@dstack.org>
+Date: Tue, 10 Dec 2024 12:00:00 +0000
+Subject: [PATCH] Makefile: use --abbrev=8 for reproducibility
+
+Force git describe to use 8-character abbreviation for commit hash
+to ensure reproducible builds regardless of repository size.
+
+Upstream-Status: Inappropriate [reproducibility specific]
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: git/src/import/Makefile
+===================================================================
+--- git.orig/src/import/Makefile
++++ git/src/import/Makefile
+@@ -11,7 +11,7 @@ RUNC_IMAGE := runc_dev$(if $(GIT_BRANCH
+ PROJECT := github.com/opencontainers/runc
+ BUILDTAGS ?= seccomp
+
+-COMMIT ?= $(shell git describe --dirty --long --always)
++COMMIT ?= $(shell git describe --dirty --long --always --abbrev=8)
+ VERSION := $(shell cat ./VERSION)
+ LDFLAGS_COMMON := -X main.gitCommit=$(COMMIT) -X main.version=$(VERSION)
