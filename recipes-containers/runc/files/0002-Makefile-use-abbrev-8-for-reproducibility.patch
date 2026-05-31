@@ -15,8 +15,8 @@ Index: git/src/import/Makefile
 ===================================================================
 --- git.orig/src/import/Makefile
 +++ git/src/import/Makefile
-@@ -14,7 +14,7 @@ EXTRA_BUILDTAGS :=
- BUILDTAGS := seccomp urfave_cli_no_docs
+@@ -15,7 +15,7 @@ EXTRA_BUILDTAGS :=
+ BUILDTAGS := seccomp urfave_cli_no_docs libpathrs
  BUILDTAGS += $(EXTRA_BUILDTAGS)
 
 -COMMIT := $(shell git describe --dirty --long --always)
