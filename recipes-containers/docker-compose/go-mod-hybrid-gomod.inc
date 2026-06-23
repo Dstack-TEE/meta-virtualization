@@ -330,8 +330,6 @@ SRC_URI += "gomod://github.com/mitchellh/go-wordwrap;version=v1.0.1;sha256sum=5f
 SRC_URI += "gomod://github.com/mitchellh/hashstructure/v2;version=v2.0.2;sha256sum=ef2ff4040e1877ba620c0c3f6d64b21f9b1fbcee551d211701c43f694bfd20ab"
 SRC_URI += "gomod://github.com/mitchellh/mapstructure;version=v1.5.0;sha256sum=118d5b2cb65c50dba967fb6d708f450a9caf93f321f8fc99080675b2ee374199"
 SRC_URI += "gomod://github.com/mitchellh/mapstructure;version=v0.0.0-20150613213606-2caf8efc9366;sha256sum=540c288003dcb86a3a2837bfb0dae8a30f0fc315f0a69c48a8e711630dad6d03"
-SRC_URI += "gomod://github.com/moby/buildkit;version=v0.26.2;sha256sum=5e89793899f3be6adc66cb053b058855f07420a9dbe931d4241591d94ae7dcc6"
-SRC_URI += "gomod://github.com/moby/buildkit;version=v0.27.1;sha256sum=f922d61d95c6adbd01a2c59f76e941841c8e4908d1b7a177f04eb7c666554015"
 SRC_URI += "gomod://github.com/moby/docker-image-spec;version=v1.3.1;sha256sum=e3fe212be410465c0cae032baa7e2c7282b9bb878f081f00549333edc260c306"
 SRC_URI += "gomod://github.com/moby/go-archive;version=v0.1.0;sha256sum=17cd0776ad62e2aee3082c26d1805dc6c355c0a1528e1119c6eab909e4ce6b3d"
 SRC_URI += "gomod://github.com/moby/go-archive;version=v0.2.0;sha256sum=9fa1f9c9076a5d614e0fe1519878b49f0ae6221203d1b41c8e1710344783d345"

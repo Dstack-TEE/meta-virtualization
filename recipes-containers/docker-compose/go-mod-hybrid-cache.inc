@@ -31,6 +31,8 @@ GO_MODULE_CACHE_DATA = '[\
 {"module":"github.com/containerd/ttrpc","version":"v1.2.7","vcs_hash":"89e0e59ec2637becf69ff869326d460e7b3aa5c251d58a6d42981bc9c12360fd","timestamp":"2024-12-28T23:29:38Z","subdir":"","vcs_ref":"refs/tags/v1.2.7"},\
 {"module":"github.com/containerd/typeurl/v2","version":"v2.2.3","vcs_hash":"60bc9255cadbea28631b3293cd629cbe0b9a9cffb987712231cdc4f9dc75a2cb","timestamp":"2024-11-07T03:45:23Z","subdir":"","vcs_ref":"refs/tags/v2.2.3"},\
 {"module":"github.com/containerd/zfs/v2","version":"v2.0.0","vcs_hash":"3b6e8e17660f86603ad978c35f23b066288dc5937890ca5c61f54fc5dfaa9052","timestamp":"2025-12-08T03:44:17Z","subdir":"","vcs_ref":"refs/tags/v2.0.0"},\
+{"module":"github.com/moby/buildkit","version":"v0.26.2","vcs_hash":"ea271cbec4e6af9d6f8b85fc342abbb36b352fe2a1696958921722eb7d40d1dc","timestamp":"2025-11-20T11:38:53Z","subdir":"","vcs_ref":"refs/tags/v0.26.2"},\
+{"module":"github.com/moby/buildkit","version":"v0.27.1","vcs_hash":"c851f6b4972c9c37c74ef154bbd0a3624b9c089e4320539a9204b388bded9c3c","timestamp":"2026-01-28T22:55:18Z","subdir":"","vcs_ref":"refs/tags/v0.27.1"},\
 {"module":"k8s.io/api","version":"v0.34.1","vcs_hash":"5c4bbd0617f6f594b275f1999f97eca8f79dbb30e908e7d6b5c7a80fd5b9b0d2","timestamp":"2025-09-10T04:39:36Z","subdir":"","vcs_ref":"refs/tags/v0.34.1"},\
 {"module":"k8s.io/apimachinery","version":"v0.34.1","vcs_hash":"9131e9ebe36078f01c5a5e8e9866300b853aa46fab527d00fc089d4c16938663","timestamp":"2025-08-16T07:57:26Z","subdir":"","vcs_ref":"refs/tags/v0.34.1"},\
 {"module":"k8s.io/client-go","version":"v0.34.1","vcs_hash":"25b2ca19570dcf36fcfa8a5388cc7647944fee1a9a445671e69704dbd6f452b5","timestamp":"2025-09-10T04:55:33Z","subdir":"","vcs_ref":"refs/tags/v0.34.1"}]'
