@@ -10,9 +10,9 @@ DEPENDS = " \
 "
 
 SRCREV_FORMAT = "nerdcli"
-SRCREV_nerdcli = "0d1089396f017bb872ad40606b0d31ebdeaa828a"
+SRCREV_nerdcli = "347782c28efe1753d5cc9652f6304752ed431221"
 
-SRC_URI = "git://github.com/containerd/nerdctl.git;name=nerdcli;branch=release/2.2;protocol=https;destsuffix=${GO_SRCURI_DESTSUFFIX}"
+SRC_URI = "git://github.com/containerd/nerdctl.git;name=nerdcli;branch=release/2.3;protocol=https;destsuffix=${GO_SRCURI_DESTSUFFIX}"
 
 # Upstream repo deleted from GitHub - fetch via Go module proxy instead
 SRC_URI += "gomod://github.com/vtolstov/go-ioctl;version=v0.0.0-20151206205506-6be9cced4810;sha256sum=26e96d5eb3389453eb54f8e510676f3dabda93deb842f679f2e967052754c4de"
@@ -40,7 +40,7 @@ LIC_FILES_CHKSUM = "file://src/import/LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd
 
 GO_IMPORT = "import"
 
-PV = "v2.2.1"
+PV = "v2.3.5"
 
 NERDCTL_PKG = "github.com/containerd/nerdctl"
 
