@@ -88,7 +88,7 @@ SRC_URI += "gomod://github.com/compose-spec/compose-go/v2;version=v2.12.1;sha256
 SRC_URI += "gomod://github.com/container-storage-interface/spec;version=v1.5.0;sha256sum=510dee9aabe403a4f9e774bfaede867b7ba060201f6b2eaf8a4bc682130aa4fc"
 SRC_URI += "gomod://github.com/containernetworking/cni;version=v1.3.0;sha256sum=7badb83e3b25468653c98f63f5d57ecfee92ef9022f203773de79fa777e445db"
 SRC_URI += "gomod://github.com/containernetworking/plugins;version=v1.9.1;sha256sum=41ea04896a9994772229bf3e4a3495756ed370edebfa162bd8d6d94c67698ff6"
-SRC_URI += "gomod://github.com/containers/gvisor-tap-vsock;version=v0.8.9"
+SRC_URI += "gomod://github.com/containers/gvisor-tap-vsock;version=v0.8.9;sha256sum=bc9eb15c530e0ddfcc3ff7faf995e7b590735eebfea733fa9d51f26930487451"
 SRC_URI += "gomod://github.com/containers/ocicrypt;version=v1.2.1;sha256sum=9b36e2235a5009b5e2efcb1374a55ca156c5798d68d09dca25b238e233860183"
 SRC_URI += "gomod://github.com/coreos/go-iptables;version=v0.8.0;sha256sum=48d679f4287e901385f1707d83e8e766089feee5ec36d0810b23d3b7ddeec4d1"
 SRC_URI += "gomod://github.com/coreos/go-semver;version=v0.3.1;sha256sum=e72820542b5913afe0a52e956e0b3834e9fbb080641fed183117f862fab74e8a"
